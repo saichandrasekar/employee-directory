@@ -26,6 +26,12 @@ public class EmployeeController {
         return employeeService.getAllEmployees(page, size);
     }
 
+    @GetMapping("/backend/v1/employee/{employeeId}")
+    public EmployeeVO getEmployeeById(@PathVariable("employeeId") Integer employeeId) {
+        log.debug("EmployeeController: getEmployeeById: Fetching employees for employeeId: " + employeeId);
+        return employeeService.getEmployeeById(employeeId);
+    }
+
     @PostMapping("/backend/v1/employee")
     public @ResponseBody EmployeeVO insertEmployee(final @RequestBody EmployeeVO employeeVO) {
         EmployeeVO savedEmployeeVO = employeeService.saveEmployee(employeeVO);

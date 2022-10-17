@@ -8,6 +8,8 @@ public interface IEmployeeService {
 
     List<EmployeeVO> getAllEmployees(final int page, final int size);
 
+    public EmployeeVO getEmployeeById(final Integer employeeId);
+
     EmployeeVO saveEmployee(final EmployeeVO employeeVO);
 
     EmployeeVO updateEmployee(final EmployeeVO employeeVO);

@@ -347,23 +347,32 @@ components:
           type: string
           example: John
           description: First name for the employee
+          minLength: 2
+          maxLength: 20
         lastName:
           type: string
           example: Doe
           description: Last name for the employee
+          minLength: 2
+          maxLength: 25
         email:
           type: string
+          format: email
           example: abc@foobar.co
           description: Email Id for the employee
         phoneNumber:
           type: string
           example: 917-658-9865
           description: Phone number for the employee
+          pattern: '^[0-9|-]{0,20}$'
         hireDate:
           type: string
           format: date
         salary:
           type: number
+          minimum: 0
+          exclusiveMinimum: true
+          maximum: 999999.99
         managerId:
           type: integer
           format: int64
@@ -390,7 +399,7 @@ components:
       type: oauth2
       flows:
         implicit:
-          authorizationUrl: http://petstore.swagger.io/oauth/dialog
+          authorizationUrl: http://mayur.swagger.io/oauth/dialog
           scopes:
             write:employees: modify employees in your account
             read:employees: read your employees

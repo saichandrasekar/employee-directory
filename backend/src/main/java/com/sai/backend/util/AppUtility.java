@@ -1,9 +1,9 @@
 package com.sai.backend.util;
 
+import com.sai.backend.entity.Department;
 import com.sai.backend.entity.Employee;
+import com.sai.backend.viewobject.DepartmentVO;
 import com.sai.backend.viewobject.EmployeeVO;
-
-import java.sql.Date;
 
 public class AppUtility {
 
@@ -31,6 +31,26 @@ public class AppUtility {
         } else {
             EmployeeVO employeeVO = new EmployeeVO(employee);
             return employeeVO;
+        }
+    }
+
+    public static Department copyFrom(DepartmentVO departmentVO) {
+        if (departmentVO == null) {
+            return null;
+        } else {
+            Department department = new Department(departmentVO.getDepartmentName(), departmentVO.getManagerId());
+            department.setDepartmentId(departmentVO.getDepartmentId());
+
+            return department;
+        }
+    }
+
+    public static DepartmentVO copyFrom(Department departmentSaved) {
+        if (departmentSaved == null) {
+            return null;
+        } else {
+            DepartmentVO departmentVO = new DepartmentVO(departmentSaved);
+            return departmentVO;
         }
     }
 }

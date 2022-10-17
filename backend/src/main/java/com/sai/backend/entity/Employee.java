@@ -1,6 +1,7 @@
 package com.sai.backend.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.sql.Date;
 
@@ -13,14 +14,18 @@ public class Employee {
     private Integer employeeId;
 
     @Column(name = "first_name")
+    @Size(max = 20)
     private String firstName;
 
     @Column(name = "last_name")
+    @Size(max = 25)
     private String lastName;
 
     @Column(name = "email")
+    @Size(max = 25)
     private String email;
     @Column(name = "phone_number")
+    @Size(max = 20)
     private String phoneNumber;
     @Column(name = "hire_date")
     private Date hireDate;

@@ -1,5 +1,7 @@
 package com.sai.backend.viewobject;
 
+import com.sai.backend.entity.Department;
+
 public class DepartmentVO {
 
     private Integer departmentId;
@@ -8,7 +10,14 @@ public class DepartmentVO {
 
     private Integer managerId;
 
-    private EmployeeVO manager;
+    public DepartmentVO(){
+    }
+
+    public DepartmentVO(Department department) {
+        this.departmentId = department.getDepartmentId();
+        this.departmentName = department.getDepartmentName();
+        this.managerId = department.getManagerId();
+    }
 
     public Integer getDepartmentId() {
         return departmentId;
@@ -34,11 +43,4 @@ public class DepartmentVO {
         this.managerId = managerId;
     }
 
-    public EmployeeVO getManager() {
-        return manager;
-    }
-
-    public void setManager(EmployeeVO manager) {
-        this.manager = manager;
-    }
 }
