@@ -1,4 +1,4 @@
-# Application Name: Employee Directory employee-directory
+# Application Name: Employee Directory (employee-directory:1.0.0)
 A sample web application to add, edit and delete employee information
 
 ## Technical Stack:
