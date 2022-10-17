@@ -265,10 +265,24 @@ URL: **POST** http://localhost:8080/backend/v1/employee
 
 Input:
 ```
+{
+  "firstName": "AQWEW",
+  "email": "abc@foobar.co",
+  "phoneNumber": "917-658-9865",
+  "hireDate": "2022-10-25T00:00:00.000+00:00",
+  "salary": 456.23,
+  "managerId": 1,
+  "departmentId": 2
+}
 ```
 
 Output:
 ```
+{
+  "errors": [
+    "The last name is required"
+  ]
+}
 ```
 ___________________________________________________________________________________________________________________________________________________________________
 ### Employee - Last Name should be more than 2 characters
@@ -277,10 +291,25 @@ URL: **POST** http://localhost:8080/backend/v1/employee
 
 Input:
 ```
+{
+  "firstName": "AQWEW",
+  "lastName": "A",
+  "email": "abc@foobar.co",
+  "phoneNumber": "917-658-9865",
+  "hireDate": "2022-10-25T00:00:00.000+00:00",
+  "salary": 456.23,
+  "managerId": 1,
+  "departmentId": 2
+}
 ```
 
 Output:
 ```
+{
+  "errors": [
+    "The length of last name must be between 2 and 25"
+  ]
+}
 ```
 ___________________________________________________________________________________________________________________________________________________________________
 ### Employee - Salary is greater than 0
@@ -289,10 +318,25 @@ URL: **POST** http://localhost:8080/backend/v1/employee
 
 Input:
 ```
+{
+  "firstName": "AQWEW",
+  "lastName": "asdsd",
+  "email": "abc@foobar.co",
+  "phoneNumber": "917-658-9865",
+  "hireDate": "2022-10-25T00:00:00.000+00:00",
+  "salary": 0.0,
+  "managerId": 1,
+  "departmentId": 2
+}
 ```
 
 Output:
 ```
+{
+  "errors": [
+    "Salary must be greater than 0"
+  ]
+}
 ```
 ___________________________________________________________________________________________________________________________________________________________________
 ### Employee - Phone number contain only digits and dashes
@@ -301,8 +345,24 @@ URL: **POST** http://localhost:8080/backend/v1/employee
 
 Input:
 ```
+{
+  "firstName": "AQWEW",
+  "lastName": "asdsd",
+  "email": "abc@foobar.co",
+  "phoneNumber": "917-6#$58-9865",
+  "hireDate": "2022-10-25T00:00:00.000+00:00",
+  "salary": 0.4,
+  "managerId": 1,
+  "departmentId": 2
+}
 ```
 
 Output:
+**HTTP 400 Bad Request**
 ```
+{
+  "errors": [
+    "The phone number can contain only digits and dashes"
+  ]
+}
 ```
