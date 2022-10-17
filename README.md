@@ -201,18 +201,108 @@ Output:
 
 ## API Request Validations
 
-> Request data validations are implemented using Spring Javax Validators. Any error in request data will result in **_400 Bad Request_ HTTP Status**
+> Request data validations are implemented using Spring Javax Validators for create and update of Employee and Department entities. Any error in request data will result in **_400 Bad Request_ HTTP Status**
 
 ### Employee - First Name should not be null
 
+URL: **POST** http://localhost:8080/backend/v1/employee
+
+Input:
+```
+{
+  "firstName": null,
+  "lastName": "asdsd",
+  "email": "abc@foobar.co",
+  "phoneNumber": "917-658-9865",
+  "hireDate": "2022-10-25T00:00:00.000+00:00",
+  "salary": 0.4,
+  "managerId": 1,
+  "departmentId": 2
+}
+```
+
+Output:
+```
+{
+  "errors": [
+    "The first name is required"
+  ]
+}
+```
+___________________________________________________________________________________________________________________________________________________________________
+
 ### Employee - First Name should be more than 2 characters
 
+URL: **POST** http://localhost:8080/backend/v1/employee
+
+Input:
+```
+{
+  "firstName": "A",
+  "lastName": "asdsd",
+  "email": "abc@foobar.co",
+  "phoneNumber": "917-658-9865",
+  "hireDate": "2022-10-25T00:00:00.000+00:00",
+  "salary": 0.4,
+  "managerId": 1,
+  "departmentId": 2
+}
+```
+
+Output:
+```
+{
+  "errors": [
+    "The length of first name must be between 2 and 20"
+  ]
+}
+```
+
+___________________________________________________________________________________________________________________________________________________________________
 ### Employee - Last Name should not be null
 
+URL: **POST** http://localhost:8080/backend/v1/employee
+
+Input:
+```
+```
+
+Output:
+```
+```
+___________________________________________________________________________________________________________________________________________________________________
 ### Employee - Last Name should be more than 2 characters
 
+URL: **POST** http://localhost:8080/backend/v1/employee
+
+Input:
+```
+```
+
+Output:
+```
+```
+___________________________________________________________________________________________________________________________________________________________________
 ### Employee - Salary is greater than 0
 
+URL: **POST** http://localhost:8080/backend/v1/employee
+
+Input:
+```
+```
+
+Output:
+```
+```
+___________________________________________________________________________________________________________________________________________________________________
 ### Employee - Phone number contain only digits and dashes
 
+URL: **POST** http://localhost:8080/backend/v1/employee
 
+Input:
+```
+```
+
+Output:
+```
+```
