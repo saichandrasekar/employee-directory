@@ -221,7 +221,7 @@ Input:
 }
 ```
 
-Output:
+Output: **HTTP 400 Bad Request**
 ```
 {
   "errors": [
@@ -249,7 +249,7 @@ Input:
 }
 ```
 
-Output:
+Output: **HTTP 400 Bad Request**
 ```
 {
   "errors": [
@@ -276,7 +276,7 @@ Input:
 }
 ```
 
-Output:
+Output: **HTTP 400 Bad Request**
 ```
 {
   "errors": [
@@ -303,7 +303,7 @@ Input:
 }
 ```
 
-Output:
+Output: **HTTP 400 Bad Request**
 ```
 {
   "errors": [
@@ -330,7 +330,7 @@ Input:
 }
 ```
 
-Output:
+Output: **HTTP 400 Bad Request**
 ```
 {
   "errors": [
@@ -357,8 +357,7 @@ Input:
 }
 ```
 
-Output:
-**HTTP 400 Bad Request**
+Output: **HTTP 400 Bad Request**
 ```
 {
   "errors": [
