@@ -1,0 +1,351 @@
+openapi: 3.0.1
+info:
+  title: Mayur Employee Directory API
+  description: 'API docs for Mayur Employee Directory to support fetch, add, edit and delete Employee and Department entities from data store.'
+  termsOfService: http://dummy.io/terms/
+  contact:
+    email: saichandrasekar@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+- url: http://localhost:8080/backend/v1
+tags:
+- name: employee
+  description: Everything about your Employee
+  externalDocs:
+    description: Find out more
+    url: http://dummy.io
+- name: department
+  description: Everything about the departments
+- name: monitoring
+  description: Monitor for the app
+paths:
+  /employee:
+    put:
+      tags:
+      - employee
+      summary: Update an existing employee
+      operationId: updateEmployee
+      requestBody:
+        description: Employee object that needs to be added to the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employee'
+        required: true
+      responses:
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Employee not found
+          content: {}
+        405:
+          description: Validation exception
+          content: {}
+      security:
+      - petstore_auth:
+        - write:pets
+        - read:pets
+      x-codegen-request-body-name: body
+    post:
+      tags:
+      - employee
+      summary: Add a new employee to the store
+      operationId: addEmployee
+      requestBody:
+        description: employee object that needs to be added to the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employee'
+        required: true
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+      security:
+      - petstore_auth:
+        - write:pets
+        - read:pets
+      x-codegen-request-body-name: body
+    get:
+      tags:
+      - employee
+      summary: Get all employees
+      description: Fetch all employees from the data store as JSON Array
+      operationId: getAllEmployee
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Employee'
+        400:
+          description: Invalid status value
+          content: {}
+      security:
+      - petstore_auth:
+        - write:pets
+        - read:pets
+  /employee/{employeeId}:
+    get:
+      tags:
+      - employee
+      summary: Find employee by ID
+      description: Returns a single employee
+      operationId: getEmployeeById
+      parameters:
+      - name: employeeId
+        in: path
+        description: ID of pet to return
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Employee'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Employee not found
+          content: {}
+      security:
+      - api_key: []
+    delete:
+      tags:
+      - employee
+      summary: Delete Employee
+      description: This can only be done by the logged in user.
+      operationId: deleteEmployee
+      parameters:
+      - name: employeeId
+        in: path
+        description: The id that needs to be deleted
+        required: true
+        schema:
+          type: string
+      responses:
+        400:
+          description: Invalid id supplied
+          content: {}
+        404:
+          description: Employee not found
+          content: {}
+  /department:
+    put:
+      tags:
+      - department
+      summary: Update an existing department
+      operationId: updateDepartment
+      requestBody:
+        description: Department object that needs to be added to the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Department'
+        required: true
+      responses:
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Department not found
+          content: {}
+        405:
+          description: Validation exception
+          content: {}
+      security:
+      - petstore_auth:
+        - write:pets
+        - read:pets
+      x-codegen-request-body-name: body
+    post:
+      tags:
+      - department
+      summary: Add a new department to the store
+      operationId: addDepartment
+      requestBody:
+        description: department object that needs to be added to the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Department'
+        required: true
+      responses:
+        405:
+          description: Invalid input
+          content: {}
+      security:
+      - petstore_auth:
+        - write:pets
+        - read:pets
+      x-codegen-request-body-name: body
+    get:
+      tags:
+      - department
+      summary: Get all departments
+      description: Fetch all employees from the data store as JSON Array
+      operationId: getAllDepartment
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Department'
+        400:
+          description: Invalid status value
+          content: {}
+      security:
+      - petstore_auth:
+        - write:pets
+        - read:pets
+  /department/{departmentId}:
+    get:
+      tags:
+      - department
+      summary: Find department by ID
+      description: Returns a single department
+      operationId: getdepartmentById
+      parameters:
+      - name: departmentId
+        in: path
+        description: ID of pet to return
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Department not found
+          content: {}
+      security:
+      - api_key: []
+    delete:
+      tags:
+      - department
+      summary: Delete Department
+      description: This can only be done by the logged in user.
+      operationId: deleteDepartment
+      parameters:
+      - name: departmentId
+        in: path
+        description: The id that needs to be deleted
+        required: true
+        schema:
+          type: string
+      responses:
+        400:
+          description: Invalid id supplied
+          content: {}
+        404:
+          description: Department not found
+          content: {}
+  /isalive:
+    get:
+      tags:
+      - monitoring
+      responses:
+        200:
+          description: App is up and running
+components:
+  schemas:
+    Employee:
+      required:
+      - firstName
+      - lastName
+      - salary
+      - phoneNumber
+      type: object
+      properties:
+        employeeId:
+          type: integer
+          format: int64
+        firstName:
+          type: string
+          example: John
+          description: First name for the employee
+        lastName:
+          type: string
+          example: Doe
+          description: Last name for the employee
+        email:
+          type: string
+          example: abc@foobar.co
+          description: Email Id for the employee
+        phoneNumber:
+          type: string
+          example: 917-658-9865
+          description: Phone number for the employee
+        hireDate:
+          type: string
+          format: date
+        salary:
+          type: number
+        managerId:
+          type: integer
+          format: int64
+        departmentId:
+          type: integer
+          format: int64
+        department:
+          $ref: '#/components/schemas/Department'
+    Department:
+      required:
+      - departmentName
+      type: object
+      properties:
+        departmentId:
+          type: integer
+          format: int64
+        departmentName:
+          type: string
+          example: IT
+          description: Name for the department
+        managerId:
+          type: integer
+          format: int64
+        manager:
+          $ref: '#/components/schemas/Employee'
+  securitySchemes:
+    petstore_auth:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: http://petstore.swagger.io/oauth/dialog
+          scopes:
+            write:employees: modify employees in your account
+            read:employees: read your employees
+    api_key:
+      type: apiKey
+      name: api_key
+      in: header
