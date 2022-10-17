@@ -29,7 +29,7 @@ public class Employee {
     private String phoneNumber;
     @Column(name = "hire_date")
     private Date hireDate;
-    @Column(name = "salary")
+    @Column(name = "salary", precision = 19, scale = 2)
     private BigDecimal salary;
 
     @Column(name = "manager_id")

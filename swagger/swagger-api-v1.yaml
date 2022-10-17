@@ -392,6 +392,8 @@ components:
           type: string
           example: IT
           description: Name for the department
+          minLength: 1
+          maxLength: 30
         managerId:
           type: integer
           format: int64

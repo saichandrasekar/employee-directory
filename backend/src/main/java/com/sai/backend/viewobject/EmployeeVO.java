@@ -15,9 +15,9 @@ public class EmployeeVO {
     private Calendar hireDate;
     private BigDecimal salary;
     private Integer managerId;
-    private EmployeeVO manager;
+
     private Integer departmentId;
-    private DepartmentVO department;
+
 
     public EmployeeVO() {
 
@@ -29,8 +29,15 @@ public class EmployeeVO {
         this.lastName = employee.getLastName();
         this.email = employee.getEmail();
         this.phoneNumber = employee.getPhoneNumber();
-        // TODO: Sai
-        //this.hireDate = employee.getHireDate();
+
+        Calendar hireDate = Calendar.getInstance();
+        if(employee.getHireDate()==null){
+            hireDate = null;
+        }else{
+            hireDate.setTime(employee.getHireDate());
+        }
+        this.hireDate = hireDate;
+
         this.salary = employee.getSalary();
         this.managerId = employee.getManagerId();
         this.departmentId = employee.getDepartmentId();
@@ -100,9 +107,6 @@ public class EmployeeVO {
         this.managerId = managerId;
     }
 
-    public EmployeeVO getManager() {
-        return manager;
-    }
 
     public Integer getDepartmentId() {
         return departmentId;
@@ -112,8 +116,5 @@ public class EmployeeVO {
         this.departmentId = departmentId;
     }
 
-    public DepartmentVO getDepartment() {
-        return department;
-    }
 
 }

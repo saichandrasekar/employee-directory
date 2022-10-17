@@ -5,6 +5,8 @@ import com.sai.backend.entity.Employee;
 import com.sai.backend.viewobject.DepartmentVO;
 import com.sai.backend.viewobject.EmployeeVO;
 
+import java.sql.Date;
+
 public class AppUtility {
 
     public static Employee copyFrom(final EmployeeVO employeeVO) {
@@ -17,10 +19,7 @@ public class AppUtility {
             employee.setSalary(employeeVO.getSalary());
             employee.setManagerId(employeeVO.getManagerId());
             employee.setDepartmentId(employeeVO.getDepartmentId());
-
-            // TODO: Sai
-            //employee.setHireDate(new Date());
-
+            employee.setHireDate(new Date(employeeVO.getHireDate().getTimeInMillis()));
             return employee;
         }
     }
