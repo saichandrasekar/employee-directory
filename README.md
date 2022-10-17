@@ -43,7 +43,7 @@ Swagger Docs OpenAPI Specification version 3
 
 1) Open https://editor.swagger.io/
 2) Import the file using Menu -> File -> Import
-3) Select the yaml file inside **_/swagger_** in source code directory.
+3) Select the yaml file inside **_/swagger_** in the source code directory.
 
 ## App Monitoring & Status:
 
@@ -67,7 +67,7 @@ http://localhost:8080/h2-console
 
 ## Testing
 
-> Below are few API examples, refer to swagger for more detailed documentation.
+> Below are a few API examples, refer to swagger for more detailed documentation.
 
 ### Create Department
 
