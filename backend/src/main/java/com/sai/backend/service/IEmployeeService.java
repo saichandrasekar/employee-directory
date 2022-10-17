@@ -1,5 +1,6 @@
 package com.sai.backend.service;
 
+import com.sai.backend.exceptions.AppException;
 import com.sai.backend.viewobject.EmployeeVO;
 
 import java.util.List;
@@ -14,5 +15,5 @@ public interface IEmployeeService {
 
     EmployeeVO updateEmployee(final EmployeeVO employeeVO);
 
-    void deleteEmployee(final Integer employeeId);
+    void deleteEmployee(final Integer employeeId) throws AppException;
 }

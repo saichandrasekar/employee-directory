@@ -1,15 +1,19 @@
 package com.sai.backend.service.impl;
 
 import com.sai.backend.BackendApplication;
+import com.sai.backend.entity.Department;
 import com.sai.backend.entity.Employee;
+import com.sai.backend.exceptions.AppException;
 import com.sai.backend.repository.EmployeePagingRepository;
 import com.sai.backend.repository.EmployeeRepository;
 import com.sai.backend.service.IEmployeeService;
 import com.sai.backend.util.AppUtility;
+import com.sai.backend.viewobject.DepartmentVO;
 import com.sai.backend.viewobject.EmployeeVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -59,17 +63,25 @@ public class EmployeeService implements IEmployeeService {
 
     public EmployeeVO updateEmployee(final EmployeeVO employeeVO) {
         Employee employee = AppUtility.copyFrom(employeeVO);
-        Employee employeeSaved = employeeRepository.save(employee);
+        if(employeeRepository.existsById(employeeVO.getEmployeeId())){
+            Employee employeeSaved = employeeRepository.save(employee);
 
-        EmployeeVO employeeVOSaved = AppUtility.copyFrom(employeeSaved);
-        return employeeVOSaved;
+            EmployeeVO employeeVOSaved = AppUtility.copyFrom(employeeSaved);
+            return employeeVOSaved;
+        }else{
+            return null;
+        }
     }
 
     public EmployeeVO getEmployeeById(final Integer employeeId) {
         return AppUtility.copyFrom(employeeRepository.findByEmployeeId(employeeId));
     }
 
-    public void deleteEmployee(final Integer employeeId) {
-        employeeRepository.deleteById(employeeId);
+    public void deleteEmployee(final Integer employeeId) throws AppException {
+        try{
+            employeeRepository.deleteById(employeeId);
+        }catch(EmptyResultDataAccessException emptyResultDataAccessException){
+            throw new AppException();
+        }
     }
 }

@@ -2,6 +2,7 @@ package com.sai.backend.service.impl;
 
 import com.sai.backend.entity.Department;
 
+import com.sai.backend.exceptions.AppException;
 import com.sai.backend.repository.DepartmentPagingRepository;
 import com.sai.backend.repository.DepartmentRepository;
 import com.sai.backend.service.IDepartmentService;
@@ -11,6 +12,7 @@ import com.sai.backend.viewobject.DepartmentVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -62,15 +64,23 @@ public class DepartmentService implements IDepartmentService {
     @Override
     public DepartmentVO updateDepartment(DepartmentVO departmentVO) {
         Department department = AppUtility.copyFrom(departmentVO);
-        Department departmentSaved = departmentRepository.save(department);
-
-        DepartmentVO departmentVOSaved = AppUtility.copyFrom(departmentSaved);
-        return departmentVOSaved;
+        if(departmentRepository.existsById(departmentVO.getDepartmentId())){
+            Department departmentSaved = departmentRepository.save(department);
+            DepartmentVO departmentVOSaved = AppUtility.copyFrom(departmentSaved);
+            return departmentVOSaved;
+        }else{
+            return null;
+        }
     }
 
     @Override
-    public void deleteDepartment(Integer departmentId) {
-        departmentRepository.deleteById(departmentId);
+    public void deleteDepartment(Integer departmentId) throws AppException {
+        try{
+            departmentRepository.deleteById(departmentId);
+        }catch(EmptyResultDataAccessException emptyResultDataAccessException){
+            throw new AppException();
+        }
+
     }
 
     public DepartmentVO getDepartmentById(final Integer departmentId) {

@@ -1,18 +1,33 @@
 package com.sai.backend.viewobject;
 
 import com.sai.backend.entity.Employee;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.util.Calendar;
 
 public class EmployeeVO {
 
     private Integer employeeId;
+
+    @NotBlank(message = "The first name is required")
+    @Size(min = 2, max = 20, message = "The length of first name must be between 2 and 20")
     private String firstName;
+    @NotBlank(message = "The last name is required")
+    @Size(min = 2, max = 25, message = "The length of last name must be between 2 and 25")
     private String lastName;
+    @Size(min = 0, max = 25, message = "The max length of email is 25")
+    @Email(message = "The email address is invalid.", flags = { Pattern.Flag.CASE_INSENSITIVE })
     private String email;
+    @Size(min = 0, max = 25, message = "The max length of Phone Number is 25")
+    @Pattern(regexp = "^[0-9|-]{0,20}$", message = "The phone number can contain only digits and dashes")
     private String phoneNumber;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Calendar hireDate;
+    @DecimalMin(value = "0.0", inclusive = false, message = "Salary must be greater than 0")
+    @Digits(integer=6, fraction=2, message = "Salary value out of bounds (<6 digits>.<2 digits> expected)")
     private BigDecimal salary;
     private Integer managerId;
 
@@ -31,9 +46,9 @@ public class EmployeeVO {
         this.phoneNumber = employee.getPhoneNumber();
 
         Calendar hireDate = Calendar.getInstance();
-        if(employee.getHireDate()==null){
+        if (employee.getHireDate() == null) {
             hireDate = null;
-        }else{
+        } else {
             hireDate.setTime(employee.getHireDate());
         }
         this.hireDate = hireDate;

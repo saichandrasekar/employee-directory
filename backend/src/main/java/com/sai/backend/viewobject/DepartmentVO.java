@@ -2,11 +2,18 @@ package com.sai.backend.viewobject;
 
 import com.sai.backend.entity.Department;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+
 public class DepartmentVO {
 
     private Integer departmentId;
 
+    @NotBlank(message = "The department name is required")
+    @Size(min = 1, max = 30, message = "The length of department name must be between 1 and 30")
     private String departmentName;
+
 
     private Integer managerId;
 

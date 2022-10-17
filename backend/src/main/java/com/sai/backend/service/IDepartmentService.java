@@ -1,5 +1,6 @@
 package com.sai.backend.service;
 
+import com.sai.backend.exceptions.AppException;
 import com.sai.backend.viewobject.DepartmentVO;
 
 import java.util.List;
@@ -14,5 +15,5 @@ public interface IDepartmentService {
 
     DepartmentVO getDepartmentById(final Integer departmentId);
 
-    void deleteDepartment(final Integer departmentId);
+    void deleteDepartment(final Integer departmentId) throws AppException;
 }
