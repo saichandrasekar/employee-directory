@@ -67,6 +67,8 @@ http://localhost:8080/h2-console
 
 ## Testing
 
+> Below are few API examples, refer to swagger for more detailed documentation.
+
 ### Create Department
 
 URL: **POST** http://localhost:8080/backend/v1/department
@@ -196,3 +198,21 @@ Output:
   "departmentId": 2
 }
 ```
+
+## API Request Validations
+
+> Request data validations are implemented using Spring Javax Validators. Any error in request data will result in **_400 Bad Request_ HTTP Status**
+
+### Employee - First Name should not be null
+
+### Employee - First Name should be more than 2 characters
+
+### Employee - Last Name should not be null
+
+### Employee - Last Name should be more than 2 characters
+
+### Employee - Salary is greater than 0
+
+### Employee - Phone number contain only digits and dashes
+
+
