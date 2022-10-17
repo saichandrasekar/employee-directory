@@ -42,7 +42,7 @@ paths:
           format: int64
       - name: size
         in: path
-        description: size of employees of result
+        description: size of employees of result. Max is 50
         required: true
         schema:
           type: integer
@@ -191,7 +191,7 @@ paths:
           format: int64
       - name: size
         in: path
-        description: size of department of result
+        description: size of department of result. Max is 50
         required: true
         schema:
           type: integer
@@ -283,7 +283,7 @@ paths:
       parameters:
       - name: departmentId
         in: path
-        description: ID of pet to return
+        description: ID of department to return
         required: true
         schema:
           type: integer
@@ -368,6 +368,7 @@ components:
         hireDate:
           type: string
           format: date
+          example: '2022-10-25T00:00:00.000+00:00'
         salary:
           type: number
           example: 0.0

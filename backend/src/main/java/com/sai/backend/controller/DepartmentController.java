@@ -24,6 +24,9 @@ public class DepartmentController {
     public List<DepartmentVO> getAllEmployees(@PathVariable("page") Integer page, @PathVariable("size") Integer size) {
         log.debug("EmployeeController: getAllEmployees: Fetching employees for page: " + page + " , size: " + size);
         size = size == 0 ? 4 : size;
+        size = size > 50 ? 50 : size;
+
+        page = page < 0 ? 0 : page;
         return departmentService.getAllDepartment(page, size);
     }
 
