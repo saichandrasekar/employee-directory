@@ -1,6 +1,7 @@
 package com.sai.backend.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Department {
@@ -10,6 +11,7 @@ public class Department {
     private Integer departmentId;
 
     @Column(name = "department_name")
+    @Size(max = 30)
     private String departmentName;
 
     @Column(name = "manager_id")

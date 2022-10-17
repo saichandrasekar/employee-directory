@@ -60,9 +60,9 @@ paths:
           description: Invalid status value
           content: {}
       security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
+      - mayur_auth:
+        - write:employees
+        - read:employees
   /employee:
     post:
       tags:
@@ -87,9 +87,9 @@ paths:
           description: Invalid input
           content: {}
       security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
+      - mayur_auth:
+        - write:employees
+        - read:employees
       x-codegen-request-body-name: body
     put:
       tags:
@@ -120,9 +120,9 @@ paths:
           description: Validation exception
           content: {}
       security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
+      - mayur_auth:
+        - write:employees
+        - read:employees
       x-codegen-request-body-name: body
   /employee/{employeeId}:
     get:
@@ -209,9 +209,9 @@ paths:
           description: Invalid status value
           content: {}
       security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
+      - mayur_auth:
+        - write:departments
+        - read:departments
   /department:
     post:
       tags:
@@ -236,9 +236,9 @@ paths:
           description: Invalid input
           content: {}
       security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
+      - mayur_auth:
+        - write:departments
+        - read:departments
       x-codegen-request-body-name: body
     put:
       tags:
@@ -269,9 +269,9 @@ paths:
           description: Validation exception
           content: {}
       security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
+      - mayur_auth:
+        - write:departments
+        - read:departments
       x-codegen-request-body-name: body
   /department/{departmentId}:
     get:
@@ -370,7 +370,8 @@ components:
           format: date
         salary:
           type: number
-          minimum: 0
+          example: 0.0
+          minimum: 123.23
           exclusiveMinimum: true
           maximum: 999999.99
         managerId:
@@ -395,7 +396,7 @@ components:
           type: integer
           format: int64
   securitySchemes:
-    petstore_auth:
+    mayur_auth:
       type: oauth2
       flows:
         implicit:
@@ -403,6 +404,8 @@ components:
           scopes:
             write:employees: modify employees in your account
             read:employees: read your employees
+            write:departments: modify departments in your account
+            read:departments: read your departments
     api_key:
       type: apiKey
       name: api_key

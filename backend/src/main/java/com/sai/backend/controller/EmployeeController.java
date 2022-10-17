@@ -44,4 +44,9 @@ public class EmployeeController {
         return savedEmployeeVO;
     }
 
+    @DeleteMapping("/backend/v1/employee/{employeeId}")
+    public void deleteEmployeeById(final @PathVariable("employeeId") Integer employeeId){
+        employeeService.deleteEmployee(employeeId);
+    }
+
 }

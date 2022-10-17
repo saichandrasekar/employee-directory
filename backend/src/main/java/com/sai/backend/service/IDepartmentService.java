@@ -12,5 +12,7 @@ public interface IDepartmentService {
 
     DepartmentVO updateDepartment(final DepartmentVO departmentVO);
 
+    DepartmentVO getDepartmentById(final Integer departmentId);
+
     void deleteDepartment(final Integer departmentId);
 }

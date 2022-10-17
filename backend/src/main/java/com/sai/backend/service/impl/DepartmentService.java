@@ -1,13 +1,13 @@
 package com.sai.backend.service.impl;
 
 import com.sai.backend.entity.Department;
-import com.sai.backend.entity.Employee;
+
 import com.sai.backend.repository.DepartmentPagingRepository;
 import com.sai.backend.repository.DepartmentRepository;
 import com.sai.backend.service.IDepartmentService;
 import com.sai.backend.util.AppUtility;
 import com.sai.backend.viewobject.DepartmentVO;
-import com.sai.backend.viewobject.EmployeeVO;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,6 +70,10 @@ public class DepartmentService implements IDepartmentService {
 
     @Override
     public void deleteDepartment(Integer departmentId) {
+        departmentRepository.deleteById(departmentId);
+    }
 
+    public DepartmentVO getDepartmentById(final Integer departmentId) {
+        return AppUtility.copyFrom(departmentRepository.findByDepartmentId(departmentId));
     }
 }
