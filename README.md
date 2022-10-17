@@ -59,11 +59,11 @@ http://localhost:8080/backend/v1/isalive
 
 ```
 http://localhost:8080/h2-console
-
-**JDBC URL** : jdbc:h2:mem:mayurdb
-**User Name** : dba
-**Password** : dba
 ```
+- **JDBC URL** : jdbc:h2:mem:mayurdb
+- **User Name** : dba
+- **Password** : dba
+
 
 ## Testing
 
