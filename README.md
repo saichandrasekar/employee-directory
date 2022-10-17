@@ -34,7 +34,7 @@ Swagger Docs OpenAPI Specification version 3
 ### Eclipse IDE or IntelliJ:
 
 1) Import the source code in /backend directory as maven project
-2) Execute $ mvn clean install
+2) Execute $ **_mvn clean install_**
 3) Run **_src/main/java/com/sai/backend/BackendApplication.java_** as Java Application
 
 ## Swagger Console
@@ -43,7 +43,7 @@ Swagger Docs OpenAPI Specification version 3
 
 1) Open https://editor.swagger.io/
 2) Import the file using Menu -> File -> Import
-3) Select the yaml file inside /swagger in source code directory.
+3) Select the yaml file inside **_/swagger_** in source code directory.
 
 ## App Monitoring & Status:
 
@@ -51,4 +51,136 @@ Swagger Docs OpenAPI Specification version 3
 
 ```
 http://localhost:8080/backend/v1/isalive
+```
+
+## Testing
+
+### Create Department
+
+URL: **POST** http://localhost:8080/backend/v1/department
+
+Input:
+```
+{  
+  "departmentName": "IT",
+  "managerId": 1
+}
+```
+
+Output:
+```
+{
+  "departmentId": 7,
+  "departmentName": "IT",
+  "managerId": 1
+}
+```
+___________________________________________________________________________________________________________________________________________________________________
+
+### Fetch Department with Pagination
+
+URL: **GET** http://localhost:8080/backend/v1/department/page/0/size/2
+
+
+Output:
+```
+[
+  {
+    "departmentId": 1,
+    "departmentName": "ADMIN",
+    "managerId": 1
+  },
+  {
+    "departmentId": 2,
+    "departmentName": "IT",
+    "managerId": 2
+  }
+]
+```
+___________________________________________________________________________________________________________________________________________________________________
+
+### Create Employee
+
+URL: **POST** http://localhost:8080/backend/v1/employee
+
+Input:
+```
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "abc@foobar.co",
+  "phoneNumber": "917-658-9865",
+  "hireDate": "2022-10-25T00:00:00.000+00:00",
+  "salary": 45.41,
+  "managerId": 1,
+  "departmentId": 2
+}
+```
+
+Output:
+```
+{
+  "employeeId": 10,
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "abc@foobar.co",
+  "phoneNumber": "917-658-9865",
+  "hireDate": "2022-10-25T00:00:00.000+00:00",
+  "salary": 45.45,
+  "managerId": 1,
+  "departmentId": 2
+}
+```
+___________________________________________________________________________________________________________________________________________________________________
+
+### Fetch Employees with Pagination
+
+URL: **GET** http://localhost:8080/backend/v1/employee/page/0/size/2
+
+Output:
+```
+[
+  {
+    "employeeId": 1,
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john_doe@mayur.com",
+    "phoneNumber": "917-852-9865",
+    "hireDate": "2022-10-17T18:30:00.000+00:00",
+    "salary": 5698.2,
+    "managerId": null,
+    "departmentId": 1
+  },
+  {
+    "employeeId": 2,
+    "firstName": "Sam",
+    "lastName": "Nickel",
+    "email": "sam_nickel@mayur.com",
+    "phoneNumber": "917-456-9865",
+    "hireDate": "2022-10-17T18:30:00.000+00:00",
+    "salary": 8795.5,
+    "managerId": null,
+    "departmentId": 2
+  }
+]
+```
+___________________________________________________________________________________________________________________________________________________________________
+
+### Fetch Employee By Id
+
+URL: **GET** http://localhost:8080/backend/v1/employee/2
+
+Output:
+```
+{
+  "employeeId": 2,
+  "firstName": "Sam",
+  "lastName": "Nickel",
+  "email": "sam_nickel@mayur.com",
+  "phoneNumber": "917-456-9865",
+  "hireDate": "2022-10-17T18:30:00.000+00:00",
+  "salary": 8795.5,
+  "managerId": null,
+  "departmentId": 2
+}
 ```
