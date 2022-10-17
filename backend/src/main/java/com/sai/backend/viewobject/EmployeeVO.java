@@ -1,5 +1,7 @@
 package com.sai.backend.viewobject;
 
+import com.sai.backend.entity.Employee;
+
 import java.math.BigDecimal;
 import java.util.Calendar;
 
@@ -16,6 +18,23 @@ public class EmployeeVO {
     private EmployeeVO manager;
     private Integer departmentId;
     private DepartmentVO department;
+
+    public EmployeeVO() {
+
+    }
+
+    public EmployeeVO(final Employee employee) {
+        this.employeeId = employee.getEmployeeId();
+        this.firstName = employee.getFirstName();
+        this.lastName = employee.getLastName();
+        this.email = employee.getEmail();
+        this.phoneNumber = employee.getPhoneNumber();
+        // TODO: Sai
+        //this.hireDate = employee.getHireDate();
+        this.salary = employee.getSalary();
+        this.managerId = employee.getManagerId();
+        this.departmentId = employee.getDepartmentId();
+    }
 
     public Integer getEmployeeId() {
         return employeeId;
