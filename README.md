@@ -35,7 +35,7 @@ Swagger Docs OpenAPI Specification version 3
 
 1) Import the source code in /backend directory as maven project
 2) Execute $ mvn clean install
-3) Run src/main/java/com/sai/backend/BackendApplication.java as Java Application
+3) Run **_src/main/java/com/sai/backend/BackendApplication.java_** as Java Application
 
 ## Swagger Console
 
