@@ -9,7 +9,7 @@ import java.sql.Date;
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer employeeId;
 
     @Column(name = "first_name")

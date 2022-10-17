@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface IEmployeeService {
 
-    List<EmployeeVO> getAllEmployees();
+    List<EmployeeVO> getAllEmployees(final int page, final int size);
 
     EmployeeVO saveEmployee(final EmployeeVO employeeVO);
 
-    Integer updateEmployee(final EmployeeVO employeeVO);
+    EmployeeVO updateEmployee(final EmployeeVO employeeVO);
 
     void deleteEmployee(final Integer employeeId);
 }
