@@ -53,6 +53,18 @@ Swagger Docs OpenAPI Specification version 3
 http://localhost:8080/backend/v1/isalive
 ```
 
+## H2 Database Console
+
+### Browser client to query the database
+
+```
+http://localhost:8080/h2-console
+
+**JDBC URL**: jdbc:h2:mem:mayurdb
+**User Name**: dba
+**Password**: dba
+```
+
 ## Testing
 
 ### Create Department
